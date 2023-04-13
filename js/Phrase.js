@@ -4,13 +4,27 @@
 
 class Phrase {
 
+    /**
+     * @constructor
+     * @param {string} phrase - The words of the phrase
+     */
+
     constructor(phrase) {
         this.phrase = phrase.toLowerCase();
     }
+    
+/**
+ * Gets the phrase as an array
+ * @returns {array} - Contains individual characters of the phrase
+ */
 
     get phraseToArr() {
         return this.phrase.split('');
     }
+
+/*
+ * Gets the ghost of the phrase onto the game board
+ */
 
     addPhraseToDisplay() {
         const phraseUL = document.querySelector('#phrase ul');
@@ -25,10 +39,21 @@ class Phrase {
         }
     }
 
+    /**
+     * Checks if a letter is inside of the phrase
+     * @param {string} letter - The letter to be checked
+     * @returns {boolean} If the letter is part of the phrase
+     */
+
     checkLetter(letter) {
         console.log(this.phraseToArr.filter( char => char === letter).length !== 0)
        return this.phraseToArr.filter( char => char === letter).length !== 0;
     }
+
+    /**
+     * Displays a letter if its part of the phrase
+     * @param {string} letter - The letter to be displayed
+     */
 
     showMatchedLetter(letter) {
 

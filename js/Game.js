@@ -4,11 +4,22 @@
 
 class Game {
 
+    /**
+     * Creates the game object
+     * @property {number} missed - counts number of incorrect answers
+     * @property {string} phrases - Holds all the possible game phrases
+     * @property {boolean} activePhrase - Holds the active game phrase
+     */
+
     constructor() {
         this.missed = 0;
-        this.phrases = ['Riding shotgun', 'If the cap fits'];
+        this.phrases = ['Riding shotgun', 'If the cap fits', 'When it rains it pours', 'The more the merrier', 'Many hands make light work', 'An apple a day keeps the doctor away', 'Easy come easy go'];
         this.activePhrase = null;
     }
+
+    /*
+     * Initializes the game
+     */
 
     startGame() {
 
@@ -16,6 +27,10 @@ class Game {
         this.activePhrase.addPhraseToDisplay();
         overlay.style.display = 'none';
     }
+
+    /*
+     * Resets the state of the game so it can be played again
+     */
 
     reset() {
         this.missed = 0;
@@ -30,10 +45,19 @@ class Game {
         })
     }
 
+    /*
+     * Sets the phrase to be guessed
+     */
+
     getRandomPhrase() {
         const randomArray = Math.floor(Math.random() * this.phrases.length)
         return new Phrase(this.phrases[randomArray]);
     }
+
+    /**
+     * Handles user inputs
+     * @param {event} e - The event
+     */
 
     handleInteraction(e) {
         const button = e.target
@@ -51,6 +75,10 @@ class Game {
         }
     }
 
+    /*
+     * Removes a heart from the on-screen life bar
+     */
+
     removeLife() {
 
         this.missed += 1;
@@ -60,7 +88,11 @@ class Game {
         if (this.missed === 5) {
             this.gameOver(false)
         }
+
     }
+    /*
+     * Checks if all the letters of the phrase have been guessed
+    */
 
     checkForWin() {
         const letters = document.querySelectorAll('.letter');
@@ -73,6 +105,11 @@ class Game {
 
         letters.length === lettersMatch.length ? this.gameOver(true) : false
     }
+
+    /**
+     * Displays a gameover screen and message depending on whether the player won or lost
+     * @param {boolean} playerWon - Is used decide which game over screen to display
+     */
 
     gameOver(playerWon) {
 
