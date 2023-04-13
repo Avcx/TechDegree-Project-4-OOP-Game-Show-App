@@ -56,23 +56,35 @@ class Game {
 
     /**
      * Handles user inputs
-     * @param {event} e - The event
+     * @param {event} [e] - The event
      */
 
     handleInteraction(e) {
-        const button = e.target
-        button.setAttribute('disabled', 'true');
-
-        if (this.activePhrase.checkLetter(button.textContent)) {
-
-            this.activePhrase.showMatchedLetter(button.textContent);
-            button.classList.add('chosen');
-            this.checkForWin();
-
-        } else {
-            button.classList.add('wrong');
-            this.removeLife();
+        let button = e.target;
+        if (e.key) {
+            document.querySelectorAll('.key')
+                            .forEach(key => {
+                                if (key.textContent === e.key) {
+                                    button = key;
+                                }
+                            });
         }
+
+           if (!button.getAttribute('disabled')) {
+             button.setAttribute('disabled', 'true');
+ 
+             if (this.activePhrase.checkLetter(button.textContent)) {
+ 
+                 this.activePhrase.showMatchedLetter(button.textContent);
+                 button.classList.add('chosen');
+                 this.checkForWin();
+ 
+             } else {
+                 button.classList.add('wrong');
+                 this.removeLife();
+             }
+           }
+        
     }
 
     /*

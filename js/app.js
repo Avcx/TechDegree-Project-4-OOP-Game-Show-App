@@ -13,6 +13,10 @@ document.querySelector('#btn__reset').addEventListener('click', e => {
 
 keyboard.addEventListener('click', e => {
     if (e.target.tagName === 'BUTTON') {
-        game.handleInteraction(e)
+        game.handleInteraction(e);
     }
 });
+
+document.addEventListener('keyup', e => {
+    game.handleInteraction(e);
+})
