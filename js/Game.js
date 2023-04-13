@@ -15,6 +15,8 @@ class Game {
         this.missed = 0;
         this.phrases = ['Riding shotgun', 'If the cap fits', 'When it rains it pours', 'The more the merrier', 'Many hands make light work', 'An apple a day keeps the doctor away', 'Easy come easy go'];
         this.activePhrase = null;
+        this.previousPhrase = null;
+        this.ready = false
     }
 
     /*
@@ -26,6 +28,7 @@ class Game {
         this.activePhrase = this.getRandomPhrase()
         this.activePhrase.addPhraseToDisplay();
         overlay.style.display = 'none';
+        this.ready = true;
     }
 
     /*
@@ -34,6 +37,8 @@ class Game {
 
     reset() {
         this.missed = 0;
+        this.ready = false;
+        this.previousPhrase = this.activePhrase;
         this.activePhrase = null;
         hearts.forEach(heart => {
             heart.querySelector('img').setAttribute('src', 'images/liveHeart.png')
@@ -50,13 +55,16 @@ class Game {
      */
 
     getRandomPhrase() {
-        const randomArray = Math.floor(Math.random() * this.phrases.length)
+        let randomArray;
+        do {
+        randomArray = Math.floor(Math.random() * this.phrases.length)
+        } while (this.phrases[randomArray] === this.previousPhrase)
         return new Phrase(this.phrases[randomArray]);
     }
 
     /**
      * Handles user inputs
-     * @param {event} [e] - The event
+     * @param {event} e - The event
      */
 
     handleInteraction(e) {
@@ -78,7 +86,6 @@ class Game {
                  this.activePhrase.showMatchedLetter(button.textContent);
                  button.classList.add('chosen');
                  this.checkForWin();
- 
              } else {
                  button.classList.add('wrong');
                  this.removeLife();
@@ -98,7 +105,7 @@ class Game {
         hearts[5-this.missed].querySelector('img').setAttribute('src', 'images/lostHeart.png')
 
         if (this.missed === 5) {
-            this.gameOver(false)
+            this.gameOver(false);
         }
 
     }
@@ -114,8 +121,10 @@ class Game {
                 lettersMatch.push(letter);
             }
         };
-
-        letters.length === lettersMatch.length ? this.gameOver(true) : false
+        if (letters.length === lettersMatch.length) { 
+            this.ready=false;
+            setTimeout(this.gameOver, 1500, true, this);
+        }
     }
 
     /**
@@ -123,7 +132,7 @@ class Game {
      * @param {boolean} playerWon - Is used decide which game over screen to display
      */
 
-    gameOver(playerWon) {
+    gameOver(playerWon, game = this) {
 
         overlay.style.display = '';
         const message = overlay.querySelector('h1');
@@ -131,11 +140,11 @@ class Game {
         if (playerWon) {
             overlay.className = 'win';
             message.textContent = 'You Won! Congrats';
-            this.reset();
+            game.reset();
         } else {
             overlay.className = 'lose';
             message.textContent = 'You Lost! Try again!';
-            this.reset();
+            game.reset();
         }
     }
 }

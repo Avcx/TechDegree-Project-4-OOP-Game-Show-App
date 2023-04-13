@@ -42,11 +42,10 @@ class Phrase {
     /**
      * Checks if a letter is inside of the phrase
      * @param {string} letter - The letter to be checked
-     * @returns {boolean} If the letter is part of the phrase
+     * @returns {boolean} - If the letter is part of the phrase
      */
 
     checkLetter(letter) {
-        console.log(this.phraseToArr.filter( char => char === letter).length !== 0)
        return this.phraseToArr.filter( char => char === letter).length !== 0;
     }
 

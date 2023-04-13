@@ -14,7 +14,7 @@ document.querySelector('#btn__reset').addEventListener('click', e => {
 // Event listener for when a button on the onScreen keyboard is clicked
 
 keyboard.addEventListener('click', e => {
-    if (e.target.tagName === 'BUTTON') {
+    if (e.target.tagName === 'BUTTON' && game.activePhrase !== null && game.ready) {
         game.handleInteraction(e);
     }
 });
@@ -22,7 +22,7 @@ keyboard.addEventListener('click', e => {
 // Event listener for when a key on the keyboard is pressed
 
 document.addEventListener('keyup', e => {
-    if (/^[a-z]$/.test(e.key) && game.activePhrase !== null) {
+    if (/^[a-z]$/.test(e.key) && game.activePhrase !== null && game.ready) {
         game.handleInteraction(e);
     }
 })
