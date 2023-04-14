@@ -13,7 +13,11 @@ class Game {
 
     constructor() {
         this.missed = 0;
-        this.phrases = ['Riding shotgun', 'If the cap fits', 'When it rains it pours', 'The more the merrier', 'Many hands make light work', 'An apple a day keeps the doctor away', 'Easy come easy go'];
+        this.phrases = ['Riding shotgun', 'If the cap fits','When it rains it pours', 
+        'The more the merrier', 'Many hands make light work', 'Its raining cats and dogs', 
+        'Easy come easy go', 'Hit the sack', 'Break a leg', 'Costs an arm and a leg', 
+        'Jump on the bandwagon', 'Kill two birds with one stone', 'Lets paint the town red'];
+
         this.activePhrase = null;
         this.previousPhrase = null;
         this.ready = false
@@ -38,7 +42,7 @@ class Game {
     reset() {
         this.missed = 0;
         this.ready = false;
-        this.previousPhrase = this.activePhrase;
+        this.previousPhrase = this.activePhrase.phrase;
         this.activePhrase = null;
         hearts.forEach(heart => {
             heart.querySelector('img').setAttribute('src', 'images/liveHeart.png')
@@ -56,9 +60,12 @@ class Game {
 
     getRandomPhrase() {
         let randomArray;
+        console.log('Prev: ' + this.previousPhrase);
         do {
         randomArray = Math.floor(Math.random() * this.phrases.length)
-        } while (this.phrases[randomArray] === this.previousPhrase)
+        console.log('New phrase...')
+        } while (this.phrases[randomArray].toLowerCase() === this.previousPhrase)
+        console.log('New: ' + this.phrases[randomArray].toLowerCase())
         return new Phrase(this.phrases[randomArray]);
     }
 
@@ -123,7 +130,7 @@ class Game {
         };
         if (letters.length === lettersMatch.length) { 
             this.ready=false;
-            setTimeout(this.gameOver, 1500, true, this);
+            setTimeout(this.gameOver, 1250, true, this);
         }
     }
 
