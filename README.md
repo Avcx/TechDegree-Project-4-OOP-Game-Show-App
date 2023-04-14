@@ -1,9 +1,24 @@
 # TechDegree Project 4 OOP Game Show App
  
- <p>This a interactive game that has the player guessing a phrases from a preselected list. The list contains 9 different phrases and a random one is
- seleected at the beginning of each game. The game has logic that prevents the same phrase from showing up two times in a row.</p>
+ <p>This is a fun, interactive game that has the player taking a crack at guessing the secret phrases. All the phrases are popular english idioms or proverbs that most people should be able to guess.</p>
 
+ ---
 
+<h2>Game Features:</h2>
  <ul>
-    <li></li>
+    <li>9 different phrases</li>
+    <li>Keyboard functionality</li>
+    <li>Clickable on screen keyboard</li>
  </ul>
+
+ ---
+
+ <h2>Additonal information:</h2>
+
+ <p>The game choses a random phrase at the beginning of each game. It makes sure that the same phrase doesn't get chosen two times in a row. The keyboard functionality of the game also checks to make sure the only keys detected are actual letters. Additionally, it checks to make sure the game is in play before it starts accepting input.</p>
+
+ ---
+ 
+<h2>Template Changes:</h2>
+
+ <p></p>
