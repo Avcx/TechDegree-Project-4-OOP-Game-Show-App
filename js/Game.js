@@ -13,10 +13,10 @@ class Game {
 
     constructor() {
         this.missed = 0;
-        this.phrases = ['Riding shotgun', 'If the cap fits','When it rains it pours', 
-        'The more the merrier', 'Many hands make light work', 'Its raining cats and dogs', 
-        'Easy come easy go', 'Hit the sack', 'Break a leg', 'Costs an arm and a leg', 
-        'Jump on the bandwagon', 'Kill two birds with one stone', 'Lets paint the town red'];
+        this.phrases = [ {name: 'Riding shotgun', hint: 'vehicle'}, {name: 'If the cap fits', hint: 'proverb'} , {name: 'When it rains it pours', hint: 'proverb'}, 
+        {name: 'The more the merrier', hint: 'people'}, {name: 'Many hands make light work', hint: 'proverb'}, {name: 'Its raining cats and dogs', hint: 'metaphor'}, 
+        {name: 'Easy come easy go', hint: ''}, {name: 'Hit the sack', hint: 'good night'}, {name: 'Break a leg', hint: 'good luck'}, {name: 'Costs an arm and a leg', hint: 'expensive'}, 
+        {name: 'Jump on the bandwagon', hint: 'if you cant beat them...'}, {name: 'Kill two birds with one stone', hint: 'efficiency'}, {name: 'Lets paint the town red', hint: 'party time'}];
 
         this.activePhrase = null;
         this.previousPhrase = null;
@@ -48,6 +48,7 @@ class Game {
             heart.querySelector('img').setAttribute('src', 'images/liveHeart.png')
         })
         document.querySelector('#phrase ul').innerHTML = '';
+        document.querySelector('#hint').textContent = '';
         keyboard.querySelectorAll('button').forEach(button => {
             button.setAttribute('class', 'key');
             button.removeAttribute('disabled');
@@ -64,8 +65,8 @@ class Game {
         do {
         randomArray = Math.floor(Math.random() * this.phrases.length)
         console.log('New phrase...')
-        } while (this.phrases[randomArray].toLowerCase() === this.previousPhrase)
-        console.log('New: ' + this.phrases[randomArray].toLowerCase())
+        } while (this.phrases[randomArray].name.toLowerCase() === this.previousPhrase)
+        console.log('New: ' + this.phrases[randomArray].name.toLowerCase())
         return new Phrase(this.phrases[randomArray]);
     }
 

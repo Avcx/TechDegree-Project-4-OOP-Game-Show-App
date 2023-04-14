@@ -21,4 +21,7 @@
  
 <h2>Template Changes:</h2>
 
- <p></p>
+ <ul>
+    <li>Changed the background color of the start screen</li>
+    <li>The game gives the player a hint about the phrase</li>
+ </ul>

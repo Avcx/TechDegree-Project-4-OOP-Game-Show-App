@@ -10,7 +10,8 @@ class Phrase {
      */
 
     constructor(phrase) {
-        this.phrase = phrase.toLowerCase();
+        this.phrase = phrase.name.toLowerCase();
+        this.hint = phrase.hint;
     }
     
 /**
@@ -28,6 +29,9 @@ class Phrase {
 
     addPhraseToDisplay() {
         const phraseUL = document.querySelector('#phrase ul');
+        const hintHeader = document.querySelector('#hint');
+
+        hintHeader.textContent = `hint: ${this.hint}`;
 
         for (let char of this.phraseToArr) {
             let letter = document.createElement('li');
