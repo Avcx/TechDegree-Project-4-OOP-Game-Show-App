@@ -6,7 +6,7 @@ class Phrase {
 
     /**
      * @constructor
-     * @param {string} phrase - The words of the phrase
+     * @param {object} phrase - The words and hint of the phrase
      */
 
     constructor(phrase) {
