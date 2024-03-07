@@ -1,10 +1,10 @@
-# TechDegree Project 4 OOP Game Show App
+# Phrase Hunter
  
- <p>This is a fun, interactive game that has the player taking a crack at guessing the secret phrases. All the phrases are popular english idioms or proverbs that most people should be able to guess.</p>
+ This is a fun, interactive game that has the player taking a crack at guessing the secret phrases. All the phrases are popular english idioms or proverbs that most people should be able to guess.
 
  ---
 
-<h2>Game Features:</h2>
+## Game Features:
  <ul>
     <li>9 different phrases</li>
     <li>Keyboard functionality</li>
@@ -13,13 +13,13 @@
 
  ---
 
- <h2>Additional information:</h2>
+ ## Additional information:
 
- <p>The game choses a random phrase at the beginning of each game. It makes sure that the same phrase doesn't get chosen two times in a row. The keyboard functionality of the game also checks to make sure the only keys detected are actual letters. Additionally, it checks to make sure the game is in play before it starts accepting input. The game also gives the player a second and a bit to see the completed phrases before displaying the game over screen.</p>
+ The game choses a random phrase at the beginning of each game. It makes sure that the same phrase doesn't get chosen two times in a row. The keyboard functionality of the game also checks to make sure the only keys detected are actual letters. Additionally, it checks to make sure the game is in play before it starts accepting input. The game also gives the player a second and a bit to see the completed phrases before displaying the game over screen.
 
  ---
  
-<h2>Template Changes:</h2>
+## Template Changes:
 
  <ul>
     <li>Changed the background color of the start screen</li>
